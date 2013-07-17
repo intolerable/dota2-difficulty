@@ -1,6 +1,10 @@
-- if @matchup_mode == nil && (session[:done] || 0) < 2
-  .warning
-    Careful: the question changes after every few answers
+- if @matchup_mode == nil
+  - if (session[:done] || 0) < 2
+    .warning
+      Careful: the question changes after every few answers
+  - if (session[:done] % 5 == 0) && session[:done] != 0
+    .warning
+      New question!
 .question
   .heading
     - if @mode == "upper"
