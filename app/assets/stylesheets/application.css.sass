@@ -25,6 +25,11 @@ body
   color: $color
   background-color: $background-color
 
+a
+  color: $color
+  &:hover
+    text-decoration: underline
+
 .table
   .row
     +span-columns(12)
@@ -66,4 +71,7 @@ body
   +omega
 .left, .right
   +span-columns(4)
+  text-align: center
+.skip
+  +span-columns(12)
   text-align: center
