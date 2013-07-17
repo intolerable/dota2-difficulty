@@ -3,11 +3,11 @@
     - if @mode == "upper"
       Which hero has the highest skill
       = succeed "?" do
-        %strong ceiling
+        %strong{ class: @mode } ceiling
     - else
       Which hero has the highest skill
       = succeed "?" do
-        %strong floor
+        %strong{ class: @mode } floor
   .tagline
     - if @mode == "upper"
       Is
