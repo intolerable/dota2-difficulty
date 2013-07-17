@@ -22,7 +22,7 @@ class Hero < ActiveRecord::Base
   end
 
   def icon_path
-    "/assets/hero_icons/#{self.name_escaped}.png"
+    "/assets/hero_icons/crushed/#{self.name_escaped}.jpg"
   end
 
   def to_param
