@@ -20,3 +20,4 @@
 
 # Ignore file with password
 /config/credentials.yml
+/config/initializers/load_credentials.rb
