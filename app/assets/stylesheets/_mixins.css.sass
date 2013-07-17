@@ -1,0 +1,28 @@
+=box-sizing( $rule )
+  -moz-box-sizing: #{$rule}-box
+  -webkit-box-sizing: #{$rule}-box
+  box-sizing: #{$rule}-box
+
+=gradient( $stops... )
+  background: -moz-linear-gradient( to bottom, $stops )
+  background: -webkit-linear-gradient( top, $stops )
+  background: -o-linear-gradient( to bottom, $stops )
+  background: linear-gradient( to bottom, $stops )
+
+=uppercase 
+  text-transform: uppercase
+
+=transition( $rules... )
+  -webkit-transition: $rules
+  -o-transition: $rules
+  -moz-transition: $rules
+  transition: $rules
+
+=desktop
+  @media (min-width: 1024px)
+    @content
+
+=filter( $filters... )
+  -moz-filter: $filters
+  -webkit-filter: $filters
+  filter: $filters

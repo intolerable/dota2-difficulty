@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  rating: 1
+  games: 1
+  pro: false
+
+two:
+  rating: 1
+  games: 1
+  pro: false

@@ -1,0 +1,16 @@
+.table
+  .row
+    .cell.header &nbsp;
+    .cell.header Name
+    .cell.header Skill Ceiling
+    .cell.header Skill Floor
+  - @heroes.each do |hero|
+    .row
+      .cell= image_tag hero.icon_path
+      .cell= hero.name
+      .cell
+        = hero.upper.rating
+        = "(#{hero.upper.games})"
+      .cell
+        = hero.lower.rating
+        = "(#{hero.lower.games})"

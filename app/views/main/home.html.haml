@@ -1,0 +1,43 @@
+.question
+  .heading
+    - if @mode == "upper"
+      Which hero has the highest skill
+      = succeed "?" do
+        %strong ceiling
+    - else
+      Which hero has the highest skill
+      = succeed "?" do
+        %strong floor
+  .tagline
+    - if @mode == "upper"
+      Is
+      %strong= @first_hero.name
+      or
+      %strong= @second_hero.name
+      harder to 
+      = succeed "?" do 
+        %strong master
+    - else
+      Is
+      %strong= @first_hero.name
+      or
+      %strong= @second_hero.name
+      harder to 
+      = succeed "?" do 
+        %strong play at an acceptable level
+
+.left
+  = image_tag @first_hero.icon_path
+  = form_tag "/results" do
+    = hidden_field_tag :winner, @first_hero.id
+    = hidden_field_tag :loser, @second_hero.id
+    = hidden_field_tag :mode, @mode
+    = submit_tag @first_hero.name
+.right
+  = image_tag @second_hero.icon_path
+  = form_tag "/results" do
+    = hidden_field_tag :winner, @second_hero.id
+    = hidden_field_tag :loser, @first_hero.id
+    = hidden_field_tag :mode, @mode
+    = submit_tag @second_hero.name
+  
