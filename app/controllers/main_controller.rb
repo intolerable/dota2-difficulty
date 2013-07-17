@@ -20,6 +20,7 @@ class MainController < ApplicationController
   end
 
   def results
+    redirect_to root_path unless authenticate
     @heroes = Hero.all
   end
 
