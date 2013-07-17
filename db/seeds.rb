@@ -8,6 +8,7 @@
 
 heroes =
   [
+    "Abaddon",
     "Alchemist",
     "Ancient Apparition",
     "Anti-Mage",
