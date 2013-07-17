@@ -2,7 +2,7 @@ class MainController < ApplicationController
 
   def home
     @first_hero, @second_hero = *Hero.random(2)
-    @mode = ["upper", "lower"].sample
+    @mode = ((session[:done] || 0) / 5) % 2 == 0 ? "upper" : "lower"
   end
 
   def ceiling
