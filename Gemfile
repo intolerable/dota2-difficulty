@@ -3,8 +3,14 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+group :production do
+  # Use Postgres as the database in production
+  gem 'pg'
+end
+group :development do
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+end
 
 # Use Haml for templates
 gem 'haml-rails'
