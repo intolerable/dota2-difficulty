@@ -33,7 +33,7 @@
     = hidden_field_tag :winner, @first_hero.id
     = hidden_field_tag :loser, @second_hero.id
     = hidden_field_tag :mode, @mode
-    = submit_tag @first_hero.name
+    = submit_tag "#{@first_hero.name} has a higher skill #{@mode == "upper" ? "ceiling" : "floor"}"
 .right
   = image_tag @second_hero.icon_path
   = form_tag "/results" do
@@ -41,7 +41,7 @@
     = hidden_field_tag :winner, @second_hero.id
     = hidden_field_tag :loser, @first_hero.id
     = hidden_field_tag :mode, @mode
-    = submit_tag @second_hero.name
+    = submit_tag "#{@second_hero.name} has a higher skill #{@mode == "upper" ? "ceiling" : "floor"}"
   
 .skip
   = link_to "Skip this match-up", request["PATH_INFO"]
