@@ -6,11 +6,16 @@ gem 'rails', '4.0.0'
 group :production do
   # Use Postgres as the database in production
   gem 'pg'
+
+  # Include heroku integration
+  gem 'rails_12factor'
 end
 group :development do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 end
+
+
 
 # Use Haml for templates
 gem 'haml-rails'
