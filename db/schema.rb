@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130715200806) do
+ActiveRecord::Schema.define(version: 20130717192624) do
 
   create_table "elo_instances", force: true do |t|
     t.integer  "rating"
@@ -29,5 +29,16 @@ ActiveRecord::Schema.define(version: 20130715200806) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "results", force: true do |t|
+    t.integer  "winner_id"
+    t.integer  "loser_id"
+    t.string   "mode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "results", ["loser_id"], name: "index_results_on_loser_id"
+  add_index "results", ["winner_id"], name: "index_results_on_winner_id"
 
 end

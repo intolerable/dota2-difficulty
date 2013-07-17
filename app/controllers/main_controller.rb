@@ -13,10 +13,15 @@ class MainController < ApplicationController
     @first_hero = Hero.find params[:winner]
     @second_hero = Hero.find params[:loser]
     @mode = params[:mode]
-    if @mode == "upper"
-      @first_hero.upper.beats @second_hero.upper
+    if @first_hero && @second_hero && ["upper", "lower"].include?(@mode)
+      if @mode == "upper"
+        @first_hero.upper.beats @second_hero.upper
+      elsif @mode == "lower"
+        @first_hero.lower.beats @second_hero.lower
+      end
+      Result.create winner: @first_hero, loser: @second_hero, mode: @mode
     else
-      @first_hero.lower.beats @second_hero.lower
+      puts "Invalid result!!"
     end
     redirect_to root_path
   end
