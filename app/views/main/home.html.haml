@@ -29,7 +29,7 @@
 .left
   = image_tag @first_hero.icon_path
   = form_tag "/results" do
-    = hidden_field_tag :matchup_mode, @mode
+    = hidden_field_tag :matchup_mode, @matchup_mode
     = hidden_field_tag :winner, @first_hero.id
     = hidden_field_tag :loser, @second_hero.id
     = hidden_field_tag :mode, @mode
@@ -37,7 +37,7 @@
 .right
   = image_tag @second_hero.icon_path
   = form_tag "/results" do
-    = hidden_field_tag :matchup_mode, @mode
+    = hidden_field_tag :matchup_mode, @matchup_mode
     = hidden_field_tag :winner, @second_hero.id
     = hidden_field_tag :loser, @first_hero.id
     = hidden_field_tag :mode, @mode
