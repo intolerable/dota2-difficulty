@@ -15,8 +15,6 @@ group :development do
   gem 'sqlite3'
 end
 
-
-
 # Use Haml for templates
 gem 'haml-rails'
 
