@@ -32,6 +32,11 @@ class MainController < ApplicationController
       elsif @mode == "lower"
         @first_hero.lower.beats @second_hero.lower
       end
+      if session[:done] == nil
+        session[:done] = 1
+      else
+        session[:done] += 1
+      end
       Result.create winner: @first_hero, loser: @second_hero, mode: @mode
     else
       puts "Invalid result!!"

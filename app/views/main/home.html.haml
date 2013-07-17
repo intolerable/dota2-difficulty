@@ -52,3 +52,8 @@
   = link_to "Only show skill ceiling matchups", "/ceiling"
   |
   = link_to "Show me anything", root_path
+
+- if session[:done]
+  .completed
+    Matchups answered: 
+    = session[:done].inspect
