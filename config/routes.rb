@@ -2,6 +2,9 @@ HeroComparison::Application.routes.draw do
 
   root to: "main#home"
 
+  get "ceiling" => "main#ceiling"
+  get "floor" => "main#floor"
+
   get "results" => "main#results"
 
   post "results" => "main#make"
