@@ -44,7 +44,7 @@
     = submit_tag @second_hero.name
   
 .skip
-  = link_to "Skip this match-up", root_path
+  = link_to "Skip this match-up", request["PATH_INFO"]
 
 .options
   = link_to "Only show skill floor matchups", "/floor"
