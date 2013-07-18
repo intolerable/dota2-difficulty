@@ -1,10 +1,3 @@
-- if @matchup_mode == nil
-  - if (session[:done] || 0) < 2
-    .warning
-      Careful: the question changes after every few answers
-  - if ((session[:done] || 0) % 5 == 0) && session[:done] != 0
-    .warning
-      New question!
 .question
   .heading
     - if @mode == "upper"
@@ -33,22 +26,32 @@
       = succeed "?" do 
         %strong play at an acceptable level
 
-.left
-  = form_tag "/results" do
-    = image_submit_tag @first_hero.icon_path
-    = hidden_field_tag :matchup_mode, @matchup_mode
-    = hidden_field_tag :winner, @first_hero.id
-    = hidden_field_tag :loser, @second_hero.id
-    = hidden_field_tag :mode, @mode
-    = submit_tag "#{@first_hero.name} has a higher skill #{@mode == "upper" ? "ceiling" : "floor"}"
-.right
-  = form_tag "/results" do
-    = image_submit_tag @second_hero.icon_path
-    = hidden_field_tag :matchup_mode, @matchup_mode
-    = hidden_field_tag :winner, @second_hero.id
-    = hidden_field_tag :loser, @first_hero.id
-    = hidden_field_tag :mode, @mode
-    = submit_tag "#{@second_hero.name} has a higher skill #{@mode == "upper" ? "ceiling" : "floor"}"
+.main
+  .left
+    = form_tag "/results" do
+      = image_submit_tag @first_hero.icon_path
+      = hidden_field_tag :matchup_mode, @matchup_mode
+      = hidden_field_tag :winner, @first_hero.id
+      = hidden_field_tag :loser, @second_hero.id
+      = hidden_field_tag :mode, @mode
+      = submit_tag "#{@first_hero.name} has a higher skill #{@mode == "upper" ? "ceiling" : "floor"}"
+  .middle
+    &nbsp;
+    - if @matchup_mode == nil
+      - if (session[:done] || 0) < 2
+        .warning
+          Careful: the question changes after every few answers
+      - if ((session[:done] || 0) % 5 == 0) && session[:done] != nil
+        .warning
+          New question!
+  .right
+    = form_tag "/results" do
+      = image_submit_tag @second_hero.icon_path
+      = hidden_field_tag :matchup_mode, @matchup_mode
+      = hidden_field_tag :winner, @second_hero.id
+      = hidden_field_tag :loser, @first_hero.id
+      = hidden_field_tag :mode, @mode
+      = submit_tag "#{@second_hero.name} has a higher skill #{@mode == "upper" ? "ceiling" : "floor"}"
   
 .skip
   = link_to "Skip this match-up", request["PATH_INFO"]
