@@ -29,4 +29,14 @@ class Hero < ActiveRecord::Base
     self.slug
   end
 
+  def to_json
+    { id: self.id,
+      name: self.name,
+      ceiling: self.upper.rating,
+      ceiling_count: self.upper.games,
+      floor: self.lower.rating,
+      floor_count: self.lower.games }
+  end
+
+
 end

@@ -26,6 +26,7 @@ class MainController < ApplicationController
     @heroes = Hero.all
     respond_to do |format|
       format.html { authenticate! }
+      format.json { render json: @heroes.map(&:to_json) }
       format.csv do
         authenticate!
         require "csv"
