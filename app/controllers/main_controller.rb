@@ -1,11 +1,13 @@
 class MainController < ApplicationController
 
   def home
+    check_if_app_disabled!
     @first_hero, @second_hero = *Hero.random(2)
     @mode = ((session[:done] || 0) / 5) % 2 == 0 ? "upper" : "lower"
   end
 
   def ceiling
+    check_if_app_disabled!
     @first_hero, @second_hero = *Hero.random(2)
     @mode = "upper"
     @matchup_mode = "upper"
@@ -13,6 +15,7 @@ class MainController < ApplicationController
   end
 
   def floor
+    check_if_app_disabled!
     @first_hero, @second_hero = *Hero.random(2)
     @mode = "lower"
     @matchup_mode = "lower"

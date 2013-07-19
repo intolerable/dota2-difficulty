@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless authenticate
   end
 
+  def check_if_app_disabled!
+    render "not_accepting" and return unless ENV["APPLICATION_ENABLED"] == "enabled"
+  end
+
   def not_found
     raise ActionController::RoutingError.new('Not Found')
   end
