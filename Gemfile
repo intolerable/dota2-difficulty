@@ -7,6 +7,8 @@ gem 'rails', '4.0.0'
 
 gem 'unicorn'
 
+gem 'google_visualr'
+
 group :production do
   # Use Postgres as the database in production
   gem 'pg'
