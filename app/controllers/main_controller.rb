@@ -20,8 +20,21 @@ class MainController < ApplicationController
   end
 
   def results
-    redirect_to root_path unless authenticate
     @heroes = Hero.all
+    respond_to do |format|
+      format.html { authenticate! }
+      format.csv do
+        authenticate!
+        require "csv"
+        results_csv = CSV.generate do |csv|
+          csv << ["Hero name", "Skill ceiling", "Skill ceiling responses", "Skill floor", "Skill floor responses"]
+          @heroes.each do |hero|
+            csv << [hero.name, hero.upper.rating, hero.upper.games, hero.lower.rating, hero.lower.games]
+          end
+        end
+        render :text => results_csv
+      end
+    end
   end
 
   def make

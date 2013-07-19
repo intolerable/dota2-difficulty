@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate!
+    redirect_to root_path unless authenticate
+  end
+
   def not_found
     raise ActionController::RoutingError.new('Not Found')
   end
