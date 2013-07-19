@@ -6,6 +6,7 @@ HeroComparison::Application.routes.draw do
   get "floor" => "main#floor"
 
   get "results" => "main#results"
+  get "graph" => "main#graph"
 
   post "results" => "main#make"
   # The priority is based upon order of creation: first created -> highest priority.
