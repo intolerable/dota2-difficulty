@@ -41,6 +41,7 @@ class MainController < ApplicationController
   end
 
   def make
+    check_if_app_disabled!
     @first_hero = Hero.find params[:winner]
     @second_hero = Hero.find params[:loser]
     @mode = params[:mode]
