@@ -25,6 +25,14 @@ class Hero < ActiveRecord::Base
     "/assets/hero_icons/crushed/#{self.name_escaped}.jpg"
   end
 
+  def ceiling
+    self.upper.rating
+  end
+
+  def floor
+    self.lower.rating
+  end
+
   def to_param
     self.slug
   end
