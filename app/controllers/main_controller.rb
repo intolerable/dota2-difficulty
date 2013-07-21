@@ -23,25 +23,7 @@ class MainController < ApplicationController
   end
 
   def graph
-    @sort_by = params[:sort_by] || "name"
-    case @sort_by
-      when "name"
-        @chart = make_chart Hero.all.order("name") do |h|
-          [h.upper.rating, h.lower.rating]
-        end
-      when "ceiling"
-        @chart = make_chart Hero.all.joins(:upper).order("elo_instances.rating") do |h|
-          [h.upper.rating, h.lower.rating]
-        end 
-      when "floor"
-        @chart = make_chart Hero.all.joins(:lower).order("elo_instances.rating") do |h|
-          [h.upper.rating, h.lower.rating]
-        end
-      else
-        @chart = make_chart Hero.all.order("name") do |h|
-          [h.upper.rating, h.lower.rating]
-        end
-    end
+    @heroes = Hero.all
   end
 
   def results
