@@ -27,19 +27,19 @@ class MainController < ApplicationController
     case @sort_by
       when "name"
         @chart = make_chart Hero.all.order("name") do |h|
-          [h.name, h.upper.rating, h.lower.rating]
+          [h.upper.rating, h.lower.rating]
         end
       when "ceiling"
         @chart = make_chart Hero.all.joins(:upper).order("elo_instances.rating") do |h|
-          [h.name, h.upper.rating, h.lower.rating]
+          [h.upper.rating, h.lower.rating]
         end 
       when "floor"
         @chart = make_chart Hero.all.joins(:lower).order("elo_instances.rating") do |h|
-          [h.name, h.upper.rating, h.lower.rating]
+          [h.upper.rating, h.lower.rating]
         end
       else
         @chart = make_chart Hero.all.order("name") do |h|
-          [h.name, h.upper.rating, h.lower.rating]
+          [h.upper.rating, h.lower.rating]
         end
     end
   end
