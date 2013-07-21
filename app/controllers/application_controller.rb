@@ -22,12 +22,12 @@ class ApplicationController < ActionController::Base
 
   def make_chart(heroes)
     data_table = GoogleVisualr::DataTable.new
-    data_table.new_column('number', 'Ceiling')
-    data_table.new_column('number', 'Floor')
+    data_table.new_column('number', '')
+    data_table.new_column('number', '')
     heroes.each do |hero|
-      data_table.add_row yield hero
+      data_table.add_row [hero.ceiling, {v: hero.floor, f: "#{hero.floor}, #{hero.name}"}]
     end
-    GoogleVisualr::Interactive::ScatterChart.new(data_table)
+    GoogleVisualr::Interactive::ScatterChart.new data_table, height: 600, width: "100%", legend: "none"
   end
 
 end
